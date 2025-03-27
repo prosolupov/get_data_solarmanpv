@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     PASSWORD: str
     IDENTITY_TYPE: str
     CLIENT_ID: str
+    ACW_TC: str
 
     URL_DATA: str
 

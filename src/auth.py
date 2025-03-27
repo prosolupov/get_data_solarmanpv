@@ -14,7 +14,7 @@ def auth_users() -> str:
     }
 
     headers = {
-        'Cookie': 'acw_tc=0a03969b17430973541494886e421f2654648931357e2a3931eb5725ed0d53'
+        'Cookie': f'acw_tc={settings.ACW_TC_KEY}'
     }
 
     response = requests.post(settings.URL_AUTH, headers=headers, json=payload)
