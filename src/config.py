@@ -12,7 +12,7 @@ class Settings(BaseSettings):
 
     URL_DATA: str
 
-    model_config = SettingsConfigDict(env_file='.env_prod')
+    model_config = SettingsConfigDict(env_file='../.env_prod')
 
 
 settings = Settings()

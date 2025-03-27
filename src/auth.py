@@ -1,6 +1,6 @@
 import requests
 
-from config import settings
+from src.config import settings
 
 
 def auth_users() -> str:
@@ -17,12 +17,8 @@ def auth_users() -> str:
         'Cookie': 'acw_tc=0a03969b17430973541494886e421f2654648931357e2a3931eb5725ed0d53'
     }
 
-    response = requests.post("https://home.solarmanpv.com/mdc-eu/oauth2-s/oauth/token", headers=headers, data=payload)
+    response = requests.post(settings.URL_AUTH, headers=headers, json=payload)
 
-    print(response.json())
+    print(response.text)
 
     return response.text
-
-
-if __name__ == '__main__':
-    auth_users()
