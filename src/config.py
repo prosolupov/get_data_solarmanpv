@@ -9,9 +9,12 @@ class Settings(BaseSettings):
     PASSWORD: str
     IDENTITY_TYPE: str
     CLIENT_ID: str
-    ACW_TC: str
+    ACW_TC_KEY: str
 
     URL_DATA: str
+    BEARER_TOKEN: str
+
+    IP_ZABBIX: str
 
     model_config = SettingsConfigDict(env_file='../.env_prod')
 

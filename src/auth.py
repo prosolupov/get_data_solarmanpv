@@ -1,8 +1,9 @@
 import requests
+from loguru import logger
 
 from src.config import settings
 
-
+@logger.catch
 def auth_users() -> str:
     payload = {
         'grant_type': settings.GRANT_TYPE,
@@ -13,12 +14,14 @@ def auth_users() -> str:
         'client_id': settings.CLIENT_ID
     }
 
+    files={}
+
     headers = {
-        'Cookie': f'acw_tc={settings.ACW_TC_KEY}'
+        'Content-Type': 'multipart/form-data',
     }
 
-    response = requests.post(settings.URL_AUTH, headers=headers, json=payload)
+    response = requests.post(settings.URL_AUTH, headers=headers, data=payload, files=files)
+    logger.info("Auth successful")
 
-    print(response.text)
-
+    print(response)
     return response.text
