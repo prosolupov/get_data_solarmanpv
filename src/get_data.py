@@ -1,24 +1,21 @@
 import requests
-from loguru import logger
+from requests import Response
 
 from src.config import settings
-from src.auth import auth_users
+from src.zabbix.zabbix import Zabbix
+from src.jwt.jwt_check import check_token
 
-def get_data() -> dict:
 
-    BEARER_TOKEN = auth_users()
+@Zabbix
+def get_data() -> Response:
+
+    BEARER_TOKEN = check_token()
 
     headers = {
-        'Authorization': settings.BEARER_TOKEN,
+        'Authorization': BEARER_TOKEN,
         'Cookie': settings.ACW_TC_KEY
     }
 
-    try:
-        res: dict = requests.get(settings.URL_DATA, headers=headers).json()
-        dict_info = {"usePower": res.get("usePower"), "wirePower": res.get("wirePower"), "generationPower": res.get("generationPower")}
-        logger.info("Get info: successful")
-    except:
-        logger.warning("Response empty")
+    res: Response = requests.get(settings.URL_DATA, headers=headers)
 
-
-    return dict_info
+    return res

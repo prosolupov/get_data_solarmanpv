@@ -1,8 +1,14 @@
-from get_data import get_data
+import sys
+from pathlib import Path
+
 from logger_config import setup_logging
-from src.auth import auth_users
+
+sys.path.append(str(Path(__file__).parent.parent))
+
+from src.get_data import get_data
+from src.jwt.jwt_check import check_token
 
 setup_logging()
 
 if __name__ == '__main__':
-    print(get_data())
+    get_data()
