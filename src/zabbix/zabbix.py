@@ -21,7 +21,7 @@ class Zabbix:
         if metrics := ResponseValidator.validate(response):
             generation, consumption, grid = metrics
             zabbix.send_power_metrics(generation, consumption, grid)
-            zabbix.send_status("ok", 2)
+            zabbix.send_status("error", 2)
             logger.info("Metrics sent successfully")
         else:
             zabbix.send_status("error", 1)
