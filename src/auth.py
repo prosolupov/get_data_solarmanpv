@@ -7,32 +7,6 @@ from src.config import settings
 
 @logger.catch
 def auth_users() -> str:
-    # payload = {
-    #     'grant_type': settings.GRANT_TYPE,
-    #     'username': settings.USER_NAME,
-    #     'clear_text_pwd': settings.CLEAR_TEXT_PWD,
-    #     'password': settings.PASSWORD,
-    #     'identity_type': settings.GRANT_TYPE,
-    #     'client_id': settings.CLIENT_ID
-    # }
-    #
-    # files = {}
-    #
-    # headers = {
-    #     'User-Agent': '*',
-    #     'Accept': 'application/json',
-    #     'Content-Type': 'application/json',
-    #     'Host': 'home.solarmanpv.com'
-    # }
-    #
-    # response: Response = requests.post(settings.URL_AUTH, headers=headers, data=payload, files=files, allow_redirects=True)
-    #
-    # print(response)
-    #
-    # if response.status_code != 200:
-    #     logger.error(response.status_code)
-    # else:
-    #     logger.info("Auth successful")
 
     payload = {
         'grant_type': 'mdc_password',
