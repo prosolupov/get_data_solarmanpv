@@ -1,6 +1,5 @@
 import requests
 from loguru import logger
-from requests import Response
 
 from src.config import settings
 
@@ -9,12 +8,12 @@ from src.config import settings
 def auth_users() -> str:
 
     payload = {
-        'grant_type': 'mdc_password',
-        'username': 'info@ktkprom.com',
-        'clear_text_pwd': 'Ktkprom2024+',
-        'password': '27398373ad63b302ccd06da4b0f780e0c60887f114f66d6ad65dfb35ffbb0b46',
-        'identity_type': '2',
-        'client_id': 'test'
+        'grant_type': settings.GRANT_TYPE,
+        'username': settings.USER_NAME,
+        'clear_text_pwd': settings.CLEAR_TEXT_PWD,
+        'password': settings.PASSWORD,
+        'identity_type': settings.IDENTITY_TYPE,
+        'client_id': settings.CLIENT_ID
     }
 
     headers = {
