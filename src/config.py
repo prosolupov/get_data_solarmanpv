@@ -13,7 +13,6 @@ class Settings(BaseSettings):
 
     URL_DATA: str
     BEARER_TOKEN: str
-    BEARER_GET_DATA: float
 
     IP_ZABBIX: str
 
